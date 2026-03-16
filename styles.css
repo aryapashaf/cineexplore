@@ -67,6 +67,13 @@
 
 html {
     scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+    width: 0;
+    height: 0;
 }
 
 body {
@@ -76,6 +83,15 @@ body {
     line-height: 1.6;
     min-height: 100vh;
     overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar,
+body::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-track {
+    width: 0;
+    height: 0;
 }
 
 /* Background Pattern */
@@ -891,10 +907,15 @@ body::before {
     .nav-container {
         flex-direction: column;
         gap: var(--spacing-md);
+        padding: var(--spacing-sm) var(--spacing-md);
     }
     
     .search-container {
         width: 100%;
+    }
+
+    .search-box {
+        flex: 1;
     }
     
     #search-input {
@@ -907,6 +928,7 @@ body::before {
     
     .hero {
         height: 60vh;
+        min-height: 420px;
     }
     
     .hero-title {
@@ -927,15 +949,156 @@ body::before {
     }
 }
 
+@media (max-width: 640px) {
+    .nav-container {
+        gap: var(--spacing-sm);
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .logo-icon {
+        font-size: 22px;
+    }
+
+    .search-container {
+        gap: var(--spacing-xs);
+    }
+
+    .search-btn {
+        width: 38px;
+        height: 38px;
+    }
+
+    .search-icon {
+        left: 12px;
+        width: 16px;
+        height: 16px;
+    }
+
+    #search-input {
+        padding: 9px 12px 9px 38px;
+        font-size: 13px;
+    }
+
+    .hero {
+        height: 55vh;
+        min-height: 380px;
+    }
+
+    .hero-title {
+        font-size: clamp(24px, 7vw, 30px);
+    }
+
+    .hero-badge {
+        padding: 4px 12px;
+        font-size: 10px;
+    }
+
+    .hero-meta {
+        gap: var(--spacing-md);
+    }
+
+    .hero-rating {
+        font-size: 16px;
+    }
+
+    .hero-rating svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .hero-date {
+        font-size: 14px;
+    }
+
+    .hero-btn {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+
+    .movies-section {
+        padding: var(--spacing-xl) var(--spacing-md);
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+
+    .section-title {
+        font-size: 20px;
+    }
+
+    .movie-count {
+        align-self: flex-start;
+        font-size: 12px;
+        padding: 4px 12px;
+    }
+
+    .movies-grid,
+    .skeleton-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+
+    .movie-card-badge {
+        font-size: 10px;
+        padding: 3px 8px;
+    }
+
+    .movie-card-title {
+        font-size: 13px;
+    }
+
+    .movie-card-rating {
+        font-size: 12px;
+    }
+
+    .modal-backdrop {
+        height: 220px;
+    }
+
+    .modal-content {
+        padding-top: 140px;
+    }
+
+    .modal-title {
+        font-size: 26px;
+    }
+
+    .modal-meta {
+        gap: var(--spacing-md);
+    }
+
+    .modal-imdb-link {
+        padding: 10px 18px;
+        font-size: 12px;
+    }
+
+    .toast {
+        padding: 10px 18px;
+        font-size: 13px;
+        bottom: var(--spacing-lg);
+    }
+}
+
 @media (max-width: 480px) {
     .hero-title {
-        font-size: 26px;
+        font-size: 24px;
     }
     
     .hero-meta {
         flex-direction: column;
         align-items: flex-start;
         gap: var(--spacing-sm);
+    }
+
+    .hero-btn {
+        padding: 10px 20px;
+        font-size: 13px;
     }
     
     .movies-grid,
@@ -949,11 +1112,11 @@ body::before {
     }
     
     .modal-title {
-        font-size: 24px;
+        font-size: 22px;
     }
     
     .modal-content {
         padding: var(--spacing-md);
-        padding-top: 120px;
+        padding-top: 110px;
     }
 }
