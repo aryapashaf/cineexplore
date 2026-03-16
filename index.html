@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineExplore - Discover Movies</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">🎬</span>
+                <span class="logo-text">CineExplore</span>
+            </a>
+            <div class="search-container">
+                <div class="search-box">
+                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <input type="text" id="search-input" placeholder="Search movies..." autocomplete="off">
+                </div>
+                <button id="search-btn" class="search-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero-section">
+        <div class="hero-backdrop" id="hero-backdrop"></div>
+        <div class="hero-gradient"></div>
+        <div class="hero-content">
+            <div class="hero-info">
+                <span class="hero-badge">Featured</span>
+                <h1 class="hero-title" id="hero-title">Loading...</h1>
+                <div class="hero-meta">
+                    <span class="hero-rating" id="hero-rating">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <span id="hero-rating-value">0.0</span>
+                    </span>
+                    <span class="hero-date" id="hero-date"></span>
+                </div>
+                <p class="hero-overview" id="hero-overview">Loading movies...</p>
+                <button class="hero-btn" id="hero-btn">
+                    <span>View Details</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Movies Grid Section -->
+    <section class="movies-section">
+        <div class="section-header">
+            <h2 class="section-title" id="section-title">Popular Movies</h2>
+            <span class="movie-count" id="movie-count"></span>
+        </div>
+        <div class="movies-grid" id="movies-grid">
+            <!-- Movie cards will be dynamically inserted here -->
+        </div>
+        <div class="loading-container" id="loading-container">
+            <div class="skeleton-grid">
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+            </div>
+        </div>
+        <div class="error-container" id="error-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <p id="error-message">Failed to load movies. Please try again.</p>
+            <button class="retry-btn" id="retry-btn">Retry</button>
+        </div>
+        <div class="no-results" id="no-results">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+                <line x1="8" y1="8" x2="14" y2="14"></line>
+                <line x1="14" y1="8" x2="8" y2="14"></line>
+            </svg>
+            <h3>No movies found</h3>
+            <p>Try searching with different keywords</p>
+        </div>
+    </section>
+
+    <!-- Movie Modal -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal-container" id="modal-container">
+            <button class="modal-close" id="modal-close">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-backdrop" id="modal-backdrop"></div>
+            <div class="modal-content">
+                <div class="modal-poster">
+                    <img id="modal-poster-img" src="" alt="">
+                </div>
+                <div class="modal-info">
+                    <h2 class="modal-title" id="modal-title"></h2>
+                    <div class="modal-meta">
+                        <span class="modal-rating" id="modal-rating">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#FFD700">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                            <span id="modal-rating-value">0.0</span>
+                        </span>
+                        <span class="modal-date" id="modal-date"></span>
+                        <span class="modal-runtime" id="modal-runtime"></span>
+                    </div>
+                    <div class="modal-genres" id="modal-genres"></div>
+                    <div class="modal-overview">
+                        <h3>Synopsis</h3>
+                        <p id="modal-overview-text"></p>
+                    </div>
+                    <div class="modal-actions">
+                        <a href="#" class="modal-imdb-link" id="modal-imdb-link" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14.31 17.21l-3.09-3.09V7.5h1.55v5.59l2.69 2.69-1.15 1.43zm6.89-13.4h-4.5v1.55h2.6v11.7h-2.6v1.55h4.5V3.81zm-9.35 5.62h1.55v6.37h-1.55V9.43zm1.55-3.87h1.55v3.87h-1.55V5.56zm3.87 3.87h1.55v6.37h-1.55V9.43z"/>
+                            </svg>
+                            View on IMDB
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <span id="toast-message"></span>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
