@@ -9,7 +9,7 @@
 // Note: Replace with your own TMDB API key
 // Get one free at: https://www.themoviedb.org/settings/api
 const CONFIG = {
-    API_KEY: 'demo_key', // Replace with your TMDB API key
+    API_KEY: 'c231005a4e9af9c6b14d623d494882f5', // Replace with your TMDB API key
     BASE_URL: 'https://api.themoviedb.org/3',
     IMAGE_BASE_URL: 'https://image.tmdb.org/t/p',
     IMAGE_SIZES: {
